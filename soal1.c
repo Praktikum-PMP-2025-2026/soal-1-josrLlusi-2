@@ -10,6 +10,7 @@
 
  #include <stdio.h>
  #include <string.h>
+ #include <stdlib.h>
 
 
 
@@ -49,10 +50,9 @@ void idxmaks(int jlh, int *ptr, int *idxmax){
 }
   
 int main() {
-    int jlh;
+    int jlharray;
     int i=0;
-    int array[100];
-    int *ptr = array;
+    int *ptrarray;
     int hasil = 0;
     int *ptrhasil;
     double avg = 0;
@@ -62,23 +62,27 @@ int main() {
     ptrmaks = &max;
     int idxmax =0;
     int *ptridx;
-
+    
+    
+    ptrarray = (int*)malloc(jlharray * sizeof(int));
     ptridx = &idxmax;
     ptravg = &avg;
     ptrhasil = &hasil;
+    
+    scanf("%d", &jlharray);
+    
 
-    scanf("%d", &jlh);
 
 
-    while(i<jlh){
-        scanf("%d", &array[i]);
+    while(i<jlharray){
+        scanf("%d", *(ptrarray+i));
         i++;
     }
 
-    sum(jlh, ptr, ptrhasil);
-    maxim(jlh, ptr, ptrmaks);
-    average(jlh, ptr, ptravg);
-    idxmaks(jlh, ptr, ptridx);
+    sum(jlharray, ptrarray, ptrhasil);
+    maxim(jlharray, ptrarray, ptrmaks);
+    average(jlharray, ptrarray, ptravg);
+    idxmaks(jlharray, ptrarray, ptridx);
     printf("SUM %d\n", hasil);
     printf("AVG %.2f\n", avg);
     printf("MAX %d\n", max);
