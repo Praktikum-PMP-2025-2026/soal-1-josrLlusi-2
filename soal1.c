@@ -29,6 +29,7 @@ void average(int jlh, int *ptr, double *avg){
 }
 
 void maxim(int jlh, int *ptr, int *max){
+    *max = *(ptr);
     for(int i = 0; i<jlh; i++){
         if(*(ptr+i) > *max){
             *max = *(ptr+i);
