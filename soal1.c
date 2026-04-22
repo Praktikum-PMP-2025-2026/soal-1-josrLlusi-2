@@ -51,38 +51,43 @@ void idxmaks(int jlh, int *ptr, int *idxmax){
   
 int main() {
     int jlharray;
-    int i=0;
     int *ptrarray;
-    int hasil = 0;
     int *ptrhasil;
-    double avg = 0;
     double *ptravg;
-    int max =0;
     int *ptrmaks;
-    ptrmaks = &max;
-    int idxmax =0;
     int *ptridx;
+    double avg = 0;
+    int max =0;
+    int hasil = 0;
+    int idxmax =0;
+    //int i=0;
+    //int *parr;
+
+    //parr = &ptrarray;
     
-    
-    ptrarray = (int*)malloc(jlharray * sizeof(int));
+    ptrmaks = &max;
     ptridx = &idxmax;
     ptravg = &avg;
     ptrhasil = &hasil;
     
     scanf("%d", &jlharray);
-    
+
+    ptrarray = (int*)malloc(jlharray * sizeof(int));
+
+    if (ptrarray == NULL){
+        printf("fail");
+    }
 
 
-
-    while(i<jlharray){
-        scanf("%d", *(ptrarray+i));
-        i++;
+    for(int i = 0; i<jlharray; i++){
+        scanf("%d", ptrarray + i);
     }
 
     sum(jlharray, ptrarray, ptrhasil);
     maxim(jlharray, ptrarray, ptrmaks);
     average(jlharray, ptrarray, ptravg);
     idxmaks(jlharray, ptrarray, ptridx);
+
     printf("SUM %d\n", hasil);
     printf("AVG %.2f\n", avg);
     printf("MAX %d\n", max);
